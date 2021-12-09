@@ -1,3 +1,4 @@
+#COPYRIGHT Misicu Laura 2021
 #!./.venv/bin/python
 
 import discord      # base discord module
