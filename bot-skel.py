@@ -137,10 +137,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 if __name__ == '__main__':
-    # check that token exists in environment
-    if 'BOT_TOKEN' not in os.environ:
-        log_msg('save your token in the BOT_TOKEN env variable!', 'error')
-        exit(-1)
-
-    # launch bot (blocking operation)
-    bot.run(os.environ['BOT_TOKEN'])
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--token", "-t", help = "Add bot_token")
+    args = parser.parse_args
+    if args.token:
+        Bot_Token = args.task
+        bot.run(Bot_Token)
+    else:
+        # check that token exists in environment
+        if 'BOT_TOKEN' not in os.environ:
+            log_msg('save your token in the BOT_TOKEN env variable!', 'error')
+            exit(-1)
+        # launch bot (blocking operation)
+        bot.run(os.environ['BOT_TOKEN'])
